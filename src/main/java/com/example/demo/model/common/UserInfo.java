@@ -10,6 +10,15 @@ public class UserInfo {
     private Long id;
     private String username;
     private String password;
+    private String Salt;
+
+    public String getSalt() {
+        return Salt;
+    }
+
+    public void setSalt(String salt) {
+        Salt = salt;
+    }
 
     public Long getId() {
         return id;

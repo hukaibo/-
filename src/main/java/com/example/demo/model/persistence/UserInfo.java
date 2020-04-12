@@ -13,8 +13,17 @@ public class UserInfo {
     private Long id;
     private String username;
     private String password;
+    private String salt;
     private LocalDate createTime;
     private LocalDate updateTime;
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
 
     public Long getId() {
         return id;

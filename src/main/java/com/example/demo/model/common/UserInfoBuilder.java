@@ -5,6 +5,7 @@ public final class UserInfoBuilder {
     private Long id;
     private String username;
     private String password;
+    private String salt;
     private UserInfoBuilder() {
     }
     public static UserInfoBuilder anUserInfo() {
@@ -25,12 +26,17 @@ public final class UserInfoBuilder {
         this.password = password;
         return this;
     }
+    public UserInfoBuilder withSalt(String salt) {
+        this.salt = salt;
+        return this;
+    }
 
     public UserInfo build() {
         UserInfo userInfo=new UserInfo();
         userInfo.setId(id);
         userInfo.setUsername(username);
         userInfo.setPassword(password);
+        userInfo.setSalt(salt);
         return userInfo;
     }
 }

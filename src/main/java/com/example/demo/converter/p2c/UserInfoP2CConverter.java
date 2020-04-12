@@ -13,6 +13,7 @@ public class UserInfoP2CConverter extends Converter<UserInfo, com.example.demo.m
                 .withId(userInfo.getId())
                 .withUsername(userInfo.getUsername())
                 .withPassword(userInfo.getPassword())
+                .withSalt(userInfo.getSalt())
                 .build();
     }
 
@@ -21,7 +22,7 @@ public class UserInfoP2CConverter extends Converter<UserInfo, com.example.demo.m
         return com.example.demo.model.persistence.UserInfoBuilder.anUserInfo()
                 .withId(userInfo.getId())
                 .withUsername(userInfo.getUsername())
-                .withUsername(userInfo.getPassword())
+                .withPassword(userInfo.getPassword())
                 .build();
     }
 }

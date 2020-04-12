@@ -6,6 +6,7 @@ public final class UserInfoBuilder {
     private Long id;
     private String username;
     private String password;
+    private String salt;
     private LocalDate createTime;
     private LocalDate updateTime;
 
@@ -21,6 +22,7 @@ public final class UserInfoBuilder {
         return this;
     }
 
+
     public UserInfoBuilder withUsername(String username) {
         this.username = username;
         return this;
@@ -28,6 +30,10 @@ public final class UserInfoBuilder {
 
     public UserInfoBuilder withPassword(String password) {
         this.password = password;
+        return this;
+    }
+    public UserInfoBuilder withSalt(String salt) {
+        this.salt = salt;
         return this;
     }
 
@@ -46,6 +52,7 @@ public final class UserInfoBuilder {
         userInfo.setId(id);
         userInfo.setUsername(username);
         userInfo.setPassword(password);
+        userInfo.setSalt(salt);
         userInfo.setCreateTime(createTime);
         userInfo.setUpdateTime(updateTime);
         return userInfo;

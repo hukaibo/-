@@ -6,20 +6,17 @@ import com.example.demo.exception.InvalidParameterException;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.exception.ServiceException;
 import com.example.demo.manager.UserInfoManager;
-import com.example.demo.model.service.UserInfo;
+import com.example.demo.model.common.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("/v1.0/users")
 public class UserController {
 
     private UserInfoManager userInfoManager;
@@ -33,10 +30,19 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserInfoByUserId(@PathVariable("id") Long userId) {
-        if (userId==null||userId<=0){
-              throw new InvalidParameterException(String.format("User id %s is invalid",userId));
+        if (userId == null || userId <= 0) {
+            throw new InvalidParameterException(String.format("User id %s is invalid", userId));
         }
-            com.example.demo.model.common.UserInfo userInfo = userInfoManager.getUserByUserId(userId);
-            return ResponseEntity.ok(Objects.requireNonNull(userInfoC2SConverter.convert(userInfo)));
+        com.example.demo.model.common.UserInfo userInfo = userInfoManager.getUserByUserId(userId);
+        return ResponseEntity.ok(Objects.requireNonNull(userInfoC2SConverter.convert(userInfo)));
+    }
+
+    @PostMapping()
+    public ResponseEntity<?>  register(
+            @RequestParam("username") String username,
+            @RequestParam("password") String password
+    ) {
+        UserInfo register = userInfoManager.register(username, password);
+        return ResponseEntity.ok(Objects.requireNonNull(userInfoC2SConverter.convert(register)));
     }
 }

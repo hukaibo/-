@@ -8,17 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GuavaTest {
+public  class GuavaTest  {
     public static void main(String[] args) {
-        GuavaTest guavaTest=new GuavaTest();
-        Integer a=null;
-        Integer b= 10;
-        List<String> ilist= Lists.newArrayList();
-        ListMultimap<Object, Object> build = MultimapBuilder.hashKeys().arrayListValues().build();
-       // Map<String,String> build=new HashMap<>();
-        build.put("a",1);
-        build.put("a",1);
-        System.out.println(build.get("a"));
+        MathOperation addition = (int a, int b) -> a + b;
+        System.out.println(addition.operation(4,5));
 
+    }
+    interface MathOperation {
+        int operation(int a, int b);
     }
 }

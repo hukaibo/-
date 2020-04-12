@@ -1,11 +1,11 @@
 package com.example.demo.exception;
 
 
-import org.springframework.http.HttpStatus;
+import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-//异常处理拦截器
+//异常处理拦截器（控制器增强）
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(ServiceException.class)
@@ -17,6 +17,17 @@ public class GlobalExceptionHandler {
                 .errorType(ex.getErrorType())
                 .build();
         return ResponseEntity.status(ex.getStatusCode())
+                .body(build);
+    }
+    @ExceptionHandler(IncorrectCredentialsException.class)
+    ResponseEntity<?> IncorrectCredentialsException(IncorrectCredentialsException ex){
+        ErrorResponse build = ErrorResponse.builder()
+                .statusCode(400)
+                .message(ex.getMessage())
+                .Code("IncorrectCredentials")
+                .errorType(ServiceException.ErrorType.Client)
+                .build();
+        return ResponseEntity.status(400)
                 .body(build);
     }
 //    @ExceptionHandler(ResourceNotFoundException.class)
@@ -41,4 +52,5 @@ public class GlobalExceptionHandler {
 //        return ResponseEntity.status(HttpStatus.BAD_REQUEST.value())
 //                .body(user_info_Invalid);
 //    }
+
 }
