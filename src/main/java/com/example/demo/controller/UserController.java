@@ -36,12 +36,13 @@ public class UserController {
         com.example.demo.model.common.UserInfo userInfo = userInfoManager.getUserByUserId(userId);
         return ResponseEntity.ok(Objects.requireNonNull(userInfoC2SConverter.convert(userInfo)));
     }
-
-    @PostMapping()
-    public ResponseEntity<?>  register(
-            @RequestParam("username") String username,
-            @RequestParam("password") String password
-    ) {
+//consumes： 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;
+//produces:    指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回；
+    @PostMapping(produces ="application/json",consumes = "application/json")
+    public ResponseEntity<?>  register(@RequestBody com.example.demo.model.service.UserInfo userInfo
+                                       ) {
+        String username = userInfo.getUsername();
+        String password = userInfo.getPassword();
         UserInfo register = userInfoManager.register(username, password);
         return ResponseEntity.ok(Objects.requireNonNull(userInfoC2SConverter.convert(register)));
     }

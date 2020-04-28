@@ -1,10 +1,12 @@
 package com.example.demo.model.service;
 
 
-import lombok.Builder;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 
 //service是给前端展示的UserInfo
+//忽略返回为null的字段
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserInfo {
 
     private Long id;

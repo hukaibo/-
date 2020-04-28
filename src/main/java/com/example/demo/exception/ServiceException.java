@@ -2,7 +2,7 @@ package com.example.demo.exception;
 
 public class ServiceException extends RuntimeException {
     private int statusCode;
-    private String errorCode;
+    private BizErrorCode errorCode;
     private ServiceException.ErrorType errorType;
     public enum ErrorType{
         Client,
@@ -21,11 +21,11 @@ public class ServiceException extends RuntimeException {
         this.statusCode = statusCode;
     }
 
-    public String getErrorCode() {
+    public BizErrorCode getErrorCode() {
         return errorCode;
     }
 
-    public void setErrorCode(String errorCode) {
+    public void setErrorCode(BizErrorCode errorCode) {
         this.errorCode = errorCode;
     }
 

@@ -8,13 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public  class GuavaTest  {
-    public static void main(String[] args) {
-        MathOperation addition = (int a, int b) -> a + b;
-        System.out.println(addition.operation(4,5));
+public class GuavaTest {
+    int a=1;
+    static String b="b";
+    public void test(){
+        System.out.println(b);
+    }
 
-    }
-    interface MathOperation {
-        int operation(int a, int b);
-    }
+
 }

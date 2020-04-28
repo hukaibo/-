@@ -42,7 +42,7 @@ public class UserControllerTest {
     @AfterEach
     void teardowm() {
         reset(userInfoManager);
-        reset(userInfoC2SConverter);
+
     }
 
     @Test

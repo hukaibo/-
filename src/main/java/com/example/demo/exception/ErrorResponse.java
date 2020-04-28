@@ -8,7 +8,7 @@ import lombok.Data;
 //不用写builder
 @Builder
 public class ErrorResponse {
-    private String Code;
+    private BizErrorCode Code;
     private ServiceException.ErrorType errorType;
     private String message;
     private int statusCode;

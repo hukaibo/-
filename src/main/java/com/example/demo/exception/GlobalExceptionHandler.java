@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
         ErrorResponse build = ErrorResponse.builder()
                 .statusCode(400)
                 .message(ex.getMessage())
-                .Code("IncorrectCredentials")
+                .Code(BizErrorCode.INCORRECT_CREDENTIALS)
                 .errorType(ServiceException.ErrorType.Client)
                 .build();
         return ResponseEntity.status(400)

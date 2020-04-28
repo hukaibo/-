@@ -8,6 +8,6 @@ public class ResourceNotFoundException extends ServiceException {
         super(message);
         this.setStatusCode(HttpStatus.NOT_FOUND.value());
         this.setErrorType(ErrorType.Client);
-        this.setErrorCode("USER_INFO_NOT_FOUND");
+        this.setErrorCode(BizErrorCode.RESOURCE_NOT_FOUND);
     }
 }

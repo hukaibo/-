@@ -13,7 +13,6 @@ public class UserInfoC2SConverter extends Converter<UserInfo, com.example.demo.m
         return UserInfoBuilder.anUserInfo()
                 .withId(userInfo.getId())
                 .withUsername(userInfo.getUsername())
-                .withPassword(userInfo.getPassword())
                 .build();
     }
 
